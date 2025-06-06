@@ -344,6 +344,8 @@ namespace Practica_Basica
                 txtEdad.Text = "";
                 txtDocumento.Text = "";
                 txtPasaporte.Text = "";
+                
+                //Hola
 
             }
         }
