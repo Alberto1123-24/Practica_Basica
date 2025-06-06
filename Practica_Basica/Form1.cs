@@ -24,7 +24,7 @@ namespace Practica_Basica
         private void Form1_Load(object sender, EventArgs e)
         {
             cmbFiltroDocumento.Items.AddRange(new string[] { "Todos", "Cédula", "Pasaporte" });
-            cmbFiltroDocumento.SelectedIndex = 0; // Por defecto "Todos"
+            cmbFiltroDocumento.SelectedIndex = 0; 
             cmbFiltroDocumento.SelectedIndexChanged += CmbFiltroDocumento_SelectedIndexChanged;
 
         }
@@ -42,7 +42,7 @@ namespace Practica_Basica
             }
             string.IsNullOrEmpty(txtPasaporte.Text);
 
-            // Validar que Edad sea un número entero
+            // Confirmamos que Edad sea un número entero
             if (!int.TryParse(txtEdad.Text.Trim(), out int edad))
             {
                 MessageBox.Show("La edad debe ser un número entero válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -51,7 +51,7 @@ namespace Practica_Basica
 
             try
             {
-                // Crear instancia del estudiante
+                // Crear instancia a la clase Estudiante 
                 Estudiante estudiante = new Estudiante
                 {
                     Nombre = txtNombre.Text.Trim(),
@@ -60,11 +60,11 @@ namespace Practica_Basica
                     Pasaporte = txtPasaporte.Text.Trim()
                 };
 
-                // Conexión
+                // Conexión a datos 
                 ConexionDatos conexion = new ConexionDatos();
                 conexion.Open();
 
-                // Consulta SQL con parámetros
+                // Consulta SQL 
                 string consulta = "INSERT INTO Estudiante (Nombre, Edad, Cedula, Pasaporte) VALUES (@Nombre, @Edad, @Documento, @Pasaporte)";
                 SqlCommand comando = new SqlCommand(consulta, conexion.GetConnection());
 
@@ -77,13 +77,13 @@ namespace Practica_Basica
 
                 MessageBox.Show("Datos agregados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Limpiar campos
+                // Limpia campos 
                 txtNombre.Clear();
                 txtEdad.Clear();
                 txtDocumento.Clear();
                 txtPasaporte.Clear();
 
-                // Recargar datos en el DataGridView
+                // Cargar datos en el datagrid
                 DatosEnGrid();
             }
             catch (Exception ex)
