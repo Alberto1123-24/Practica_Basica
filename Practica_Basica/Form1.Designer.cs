@@ -47,6 +47,7 @@
             lblPasaporte = new Label();
             cmbFiltroDocumento = new ComboBox();
             errorProvider1 = new ErrorProvider(components);
+            btnEliminar = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewEstudiantes).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
@@ -54,10 +55,11 @@
             // lblTitulo
             // 
             lblTitulo.AutoSize = true;
-            lblTitulo.Font = new Font("Segoe UI", 10F);
+            lblTitulo.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTitulo.ForeColor = SystemColors.ActiveCaptionText;
             lblTitulo.Location = new Point(12, 9);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(161, 23);
+            lblTitulo.Size = new Size(170, 23);
             lblTitulo.TabIndex = 0;
             lblTitulo.Text = "Agregar Estudiante ";
             // 
@@ -122,10 +124,10 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.Font = new Font("Segoe UI", 10F);
-            btnAgregar.Location = new Point(421, 64);
+            btnAgregar.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAgregar.Location = new Point(457, 54);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(144, 83);
+            btnAgregar.Size = new Size(122, 53);
             btnAgregar.TabIndex = 5;
             btnAgregar.Text = "Agregar";
             btnAgregar.UseVisualStyleBackColor = true;
@@ -134,10 +136,10 @@
             // lblLista
             // 
             lblLista.AutoSize = true;
-            lblLista.Font = new Font("Segoe UI", 10F);
+            lblLista.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblLista.Location = new Point(13, 224);
             lblLista.Name = "lblLista";
-            lblLista.Size = new Size(160, 23);
+            lblLista.Size = new Size(168, 23);
             lblLista.TabIndex = 8;
             lblLista.Text = "Lista de Estudiantes";
             lblLista.Click += lblLista_Click;
@@ -145,10 +147,10 @@
             // lblBuscarID
             // 
             lblBuscarID.AutoSize = true;
-            lblBuscarID.Font = new Font("Segoe UI", 10F);
+            lblBuscarID.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblBuscarID.Location = new Point(12, 481);
             lblBuscarID.Name = "lblBuscarID";
-            lblBuscarID.Size = new Size(113, 23);
+            lblBuscarID.Size = new Size(118, 23);
             lblBuscarID.TabIndex = 10;
             lblBuscarID.Text = "Buscar por ID";
             // 
@@ -172,7 +174,7 @@
             // 
             // btnBuscar
             // 
-            btnBuscar.Font = new Font("Segoe UI", 10F);
+            btnBuscar.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnBuscar.Location = new Point(421, 505);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(144, 50);
@@ -224,11 +226,24 @@
             errorProvider1.BlinkRate = 200;
             errorProvider1.ContainerControl = this;
             // 
+            // btnEliminar
+            // 
+            btnEliminar.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEliminar.Location = new Point(457, 134);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(122, 48);
+            btnEliminar.TabIndex = 18;
+            btnEliminar.Text = "Eliminar";
+            btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.Click += button1_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Gainsboro;
             ClientSize = new Size(711, 599);
+            Controls.Add(btnEliminar);
             Controls.Add(cmbFiltroDocumento);
             Controls.Add(lblPasaporte);
             Controls.Add(txtPasaporte);
@@ -275,5 +290,6 @@
         private Label lblPasaporte;
         private ComboBox cmbFiltroDocumento;
         private ErrorProvider errorProvider1;
+        private Button btnEliminar;
     }
 }

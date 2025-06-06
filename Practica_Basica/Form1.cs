@@ -24,7 +24,7 @@ namespace Practica_Basica
         private void Form1_Load(object sender, EventArgs e)
         {
             cmbFiltroDocumento.Items.AddRange(new string[] { "Todos", "Cédula", "Pasaporte" });
-            cmbFiltroDocumento.SelectedIndex = 0; 
+            cmbFiltroDocumento.SelectedIndex = 0;
             cmbFiltroDocumento.SelectedIndexChanged += CmbFiltroDocumento_SelectedIndexChanged;
 
         }
@@ -271,6 +271,60 @@ namespace Practica_Basica
                 e.Handled = true;
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            DialogResult resultado = MessageBox.Show(
+             "¿Estás seguro de que deseas eliminar los datos?",
+             "Confirmar eliminación",
+             MessageBoxButtons.YesNo,
+             MessageBoxIcon.Warning
+             );
+
+            if (resultado == DialogResult.Yes)
+            {
+                // Eliminar de la base de datos
+                string conexion = "Server=.; Database=Practica_Basica1; Integrated Security=true; TrustServerCertificate=True";
+                using (SqlConnection conn = new SqlConnection(conexion))
+                {
+                    try
+                    {
+                        conn.Open();
+                        string query = "DELETE FROM Estudiante WHERE Cedula = @Cedula OR Pasaporte = @Pasaporte";
+                        using (SqlCommand cmd = new SqlCommand(query, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@Cedula", txtDocumento.Text);
+                            cmd.Parameters.AddWithValue("@Pasaporte", txtPasaporte.Text);
+                            int filasAfectadas = cmd.ExecuteNonQuery();
+
+                            if (filasAfectadas > 0)
+                            {
+                                MessageBox.Show("Datos eliminados correctamente.");
+                            }
+                            else
+                            {
+                                MessageBox.Show("No se encontró ningún registro con esa cédula o pasaporte.");
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al eliminar: " + ex.Message);
+                    }
+                }
+
+                // Limpiar los campos
+                txtNombre.Text = "";
+                txtEdad.Text = "";
+                txtDocumento.Text = "";
+                txtPasaporte.Text = "";
+
+            }
+        }
+
+
     }
 }
+
 
