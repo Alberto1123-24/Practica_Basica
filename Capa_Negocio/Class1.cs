@@ -12,14 +12,4 @@ namespace Capa_Negocio
         
         public string Pasaporte { get; set; }
     }
-
-    public class EstudianteNacional : Estudiante
-    {
-
-    }
-
-    public class EstudianteExtranjero : Estudiante
-    {
-
-    }
 }

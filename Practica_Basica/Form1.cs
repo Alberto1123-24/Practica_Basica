@@ -12,6 +12,16 @@ namespace Practica_Basica
 {
     public partial class Form1 : Form
     {
+        public class EstudianteNacional : Estudiante
+        {
+
+        }
+
+        public class EstudianteExtranjero : Estudiante
+        {
+
+        }
+
         private ConexionDatos conexion;
         private EventHandler cmbFiltroDocumento_SelectedIndexChanged;
 
