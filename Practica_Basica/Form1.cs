@@ -13,6 +13,7 @@ namespace Practica_Basica
     public partial class Form1 : Form
     {
         private ConexionDatos conexion;
+        private EventHandler cmbFiltroDocumento_SelectedIndexChanged;
 
         public Form1()
         {
@@ -22,6 +23,9 @@ namespace Practica_Basica
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            cmbFiltroDocumento.Items.AddRange(new string[] { "Todos", "Cédula", "Pasaporte" });
+            cmbFiltroDocumento.SelectedIndex = 0; // Por defecto "Todos"
+            cmbFiltroDocumento.SelectedIndexChanged += CmbFiltroDocumento_SelectedIndexChanged;
 
         }
 
@@ -30,13 +34,13 @@ namespace Practica_Basica
             // Validar campos vacíos
             if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
                 string.IsNullOrWhiteSpace(txtEdad.Text))
-                //string.IsNullOrWhiteSpace(txtDocumento.Text))
-                
+            //string.IsNullOrWhiteSpace(txtDocumento.Text))
+
             {
                 MessageBox.Show("Por favor, complete todos los campos.", "Campos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-                string.IsNullOrEmpty(txtPasaporte.Text);
+            string.IsNullOrEmpty(txtPasaporte.Text);
 
             // Validar que Edad sea un número entero
             if (!int.TryParse(txtEdad.Text.Trim(), out int edad))
@@ -154,17 +158,119 @@ namespace Practica_Basica
 
                 lector.Close();
                 conexion.Close();
+                txtBuscarID.Clear();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al buscar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
+
 
         private void lblBuscarporID_Click(object sender, EventArgs e) { }
         private void lblLista_Click(object sender, EventArgs e) { }
         private void dataGridViewEstudiantes_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+
+        }
+
+        private void txtEdad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CmbFiltroDocumento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string filtro = cmbFiltroDocumento.SelectedItem.ToString();
+
+            try
+            {
+                ConexionDatos conexion = new ConexionDatos();
+                SqlConnection conn = conexion.GetConnection();
+                conexion.Open();
+
+                string query = "SELECT ID, Nombre, Edad, Cedula, Pasaporte FROM Estudiante";
+
+                if (filtro == "Cédula")
+                {
+                    query += " WHERE Cedula IS NOT NULL AND Cedula <> ''";
+                }
+                else if (filtro == "Pasaporte")
+                {
+                    query += " WHERE Pasaporte IS NOT NULL AND Pasaporte <> ''";
+                }
+
+                SqlDataAdapter adaptador = new SqlDataAdapter(query, conn);
+                DataTable tabla = new DataTable();
+                adaptador.Fill(tabla);
+
+                dataGridViewEstudiantes.DataSource = tabla;
+
+                conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al filtrar los datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cmbFiltroDocumento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtNombre_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+            if (txtNombre.Text == "")
+            {
+                errorProvider1.SetError(this.txtNombre, "No puede dejar este campo vacío");
+            }
+            else
+            {
+                errorProvider1.SetError(this.txtNombre, "");
+            }
+
+
+        }
+
+        private void txtEdad_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (txtEdad.Text == "")
+            {
+                errorProvider1.SetError(this.txtEdad, "No puede dejar este campo vacío");
+            }
+            else
+            {
+                errorProvider1.SetError(this.txtEdad, "");
+            }
+
+        }
+
+        private void txtDocumento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }
 

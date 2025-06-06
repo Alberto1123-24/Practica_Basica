@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             lblTitulo = new Label();
             lblNombre = new Label();
             lblEdad = new Label();
@@ -44,7 +45,10 @@
             dataGridViewEstudiantes = new DataGridView();
             txtPasaporte = new TextBox();
             lblPasaporte = new Label();
+            cmbFiltroDocumento = new ComboBox();
+            errorProvider1 = new ErrorProvider(components);
             ((System.ComponentModel.ISupportInitialize)dataGridViewEstudiantes).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // lblTitulo
@@ -93,6 +97,9 @@
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(234, 27);
             txtNombre.TabIndex = 1;
+            txtNombre.TextChanged += txtNombre_TextChanged;
+            txtNombre.KeyPress += txtNombre_KeyPress;
+            txtNombre.Validating += txtNombre_Validating;
             // 
             // txtEdad
             // 
@@ -100,6 +107,8 @@
             txtEdad.Name = "txtEdad";
             txtEdad.Size = new Size(125, 27);
             txtEdad.TabIndex = 2;
+            txtEdad.KeyPress += txtEdad_KeyPress;
+            txtEdad.Validating += txtEdad_Validating;
             // 
             // txtDocumento
             // 
@@ -109,6 +118,7 @@
             txtDocumento.ShortcutsEnabled = false;
             txtDocumento.Size = new Size(234, 27);
             txtDocumento.TabIndex = 3;
+            txtDocumento.KeyPress += txtDocumento_KeyPress;
             // 
             // btnAgregar
             // 
@@ -116,7 +126,7 @@
             btnAgregar.Location = new Point(421, 64);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(144, 83);
-            btnAgregar.TabIndex = 4;
+            btnAgregar.TabIndex = 5;
             btnAgregar.Text = "Agregar";
             btnAgregar.UseVisualStyleBackColor = true;
             btnAgregar.Click += btnAgregar_Click;
@@ -158,7 +168,7 @@
             txtBuscarID.Location = new Point(150, 518);
             txtBuscarID.Name = "txtBuscarID";
             txtBuscarID.Size = new Size(234, 27);
-            txtBuscarID.TabIndex = 12;
+            txtBuscarID.TabIndex = 6;
             // 
             // btnBuscar
             // 
@@ -166,7 +176,7 @@
             btnBuscar.Location = new Point(421, 505);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(144, 50);
-            btnBuscar.TabIndex = 13;
+            btnBuscar.TabIndex = 7;
             btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
             btnBuscar.Click += btnBuscar_Click;
@@ -187,7 +197,7 @@
             txtPasaporte.Location = new Point(150, 176);
             txtPasaporte.Name = "txtPasaporte";
             txtPasaporte.Size = new Size(234, 27);
-            txtPasaporte.TabIndex = 15;
+            txtPasaporte.TabIndex = 4;
             // 
             // lblPasaporte
             // 
@@ -199,11 +209,27 @@
             lblPasaporte.TabIndex = 16;
             lblPasaporte.Text = "Pasaporte";
             // 
+            // cmbFiltroDocumento
+            // 
+            cmbFiltroDocumento.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbFiltroDocumento.FormattingEnabled = true;
+            cmbFiltroDocumento.Location = new Point(518, 207);
+            cmbFiltroDocumento.Name = "cmbFiltroDocumento";
+            cmbFiltroDocumento.Size = new Size(151, 28);
+            cmbFiltroDocumento.TabIndex = 17;
+            cmbFiltroDocumento.KeyPress += cmbFiltroDocumento_KeyPress;
+            // 
+            // errorProvider1
+            // 
+            errorProvider1.BlinkRate = 200;
+            errorProvider1.ContainerControl = this;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(711, 599);
+            Controls.Add(cmbFiltroDocumento);
             Controls.Add(lblPasaporte);
             Controls.Add(txtPasaporte);
             Controls.Add(dataGridViewEstudiantes);
@@ -224,6 +250,7 @@
             Text = "Form1";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewEstudiantes).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -246,5 +273,7 @@
         private DataGridView dataGridViewEstudiantes;
         private TextBox txtPasaporte;
         private Label lblPasaporte;
+        private ComboBox cmbFiltroDocumento;
+        private ErrorProvider errorProvider1;
     }
 }
