@@ -32,6 +32,29 @@ namespace Practica_Basica
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             // Validar campos vacíos
+            if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtEdad.Text))
+            {
+                MessageBox.Show("Por favor, complete todos los campos obligatorios (Nombre y Edad).", "Campos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Validar que solo uno de los dos (Cédula o Pasaporte) esté lleno
+            bool cedulaLlena = !string.IsNullOrWhiteSpace(txtDocumento.Text);
+            bool pasaporteLleno = !string.IsNullOrWhiteSpace(txtPasaporte.Text);
+
+            if (!cedulaLlena && !pasaporteLleno)
+            {
+                MessageBox.Show("Debe ingresar Cédula o Pasaporte.", "Campo requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (cedulaLlena && pasaporteLleno)
+            {
+                MessageBox.Show("Solo puede ingresar Cédula o Pasaporte, no ambos.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Validar campos vacíos
             if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
                 string.IsNullOrWhiteSpace(txtEdad.Text))
             //string.IsNullOrWhiteSpace(txtDocumento.Text))
@@ -147,7 +170,8 @@ namespace Practica_Basica
 
                     txtNombre.Text = estudiante.Nombre;
                     txtEdad.Text = estudiante.Edad.ToString();
-                    txtDocumento.Text = !string.IsNullOrEmpty(estudiante.Cedula) ? estudiante.Cedula : estudiante.Pasaporte;
+                    txtDocumento.Text = estudiante.Cedula;
+                    txtPasaporte.Text = estudiante.Pasaporte;
 
                     MessageBox.Show("Estudiante encontrado.", "Búsqueda exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -301,6 +325,7 @@ namespace Practica_Basica
                             if (filasAfectadas > 0)
                             {
                                 MessageBox.Show("Datos eliminados correctamente.");
+                                DatosEnGrid();
                             }
                             else
                             {
@@ -323,7 +348,10 @@ namespace Practica_Basica
             }
         }
 
+        private void cmbFiltroDocumento_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
 
+        }
     }
 }
 

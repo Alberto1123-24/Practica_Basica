@@ -219,6 +219,7 @@
             cmbFiltroDocumento.Name = "cmbFiltroDocumento";
             cmbFiltroDocumento.Size = new Size(151, 28);
             cmbFiltroDocumento.TabIndex = 17;
+            cmbFiltroDocumento.SelectedIndexChanged += cmbFiltroDocumento_SelectedIndexChanged_1;
             cmbFiltroDocumento.KeyPress += cmbFiltroDocumento_KeyPress;
             // 
             // errorProvider1
