@@ -104,6 +104,7 @@
             dgvMateriasynotas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvMateriasynotas.Location = new Point(15, 238);
             dgvMateriasynotas.Name = "dgvMateriasynotas";
+            dgvMateriasynotas.ReadOnly = true;
             dgvMateriasynotas.RowHeadersWidth = 51;
             dgvMateriasynotas.Size = new Size(393, 188);
             dgvMateriasynotas.TabIndex = 8;

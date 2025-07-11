@@ -53,6 +53,16 @@ namespace Capa_Presentacion
 
             }
         }
+
+        private void dgvHistorial_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvHistorial_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
     }
 }
 

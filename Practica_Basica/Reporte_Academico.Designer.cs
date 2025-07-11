@@ -125,9 +125,12 @@
             dgvHistorial.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvHistorial.Location = new Point(12, 238);
             dgvHistorial.Name = "dgvHistorial";
+            dgvHistorial.ReadOnly = true;
             dgvHistorial.RowHeadersWidth = 51;
             dgvHistorial.Size = new Size(409, 188);
             dgvHistorial.TabIndex = 9;
+            dgvHistorial.CellContentClick += dgvHistorial_CellContentClick;
+            dgvHistorial.KeyPress += dgvHistorial_KeyPress;
             // 
             // button1
             // 

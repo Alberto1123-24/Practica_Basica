@@ -44,7 +44,7 @@ namespace Capa_Negocio
             }
             catch (Exception ex)
             {
-                // Puedes manejar el error como prefieras
+               
                 throw new Exception("Error al obtener estudiantes: " + ex.Message);
             }
 
@@ -62,7 +62,7 @@ namespace Capa_Negocio
             conexion = new ConexionDatos();
         }
 
-        // Clase interna para representar una materia
+       
         public class Materia
         {
             public int Id { get; set; }
