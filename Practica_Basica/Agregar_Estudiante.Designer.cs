@@ -1,6 +1,6 @@
 ﻿namespace Practica_Basica
 {
-    partial class Form1
+    partial class Agregarestudiante
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Agregarestudiante));
             lblTitulo = new Label();
             lblNombre = new Label();
             lblEdad = new Label();
@@ -124,13 +125,15 @@
             // 
             // btnAgregar
             // 
+            btnAgregar.BackColor = SystemColors.MenuHighlight;
             btnAgregar.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAgregar.ForeColor = SystemColors.HighlightText;
             btnAgregar.Location = new Point(457, 54);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(122, 53);
             btnAgregar.TabIndex = 5;
             btnAgregar.Text = "Agregar";
-            btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.UseVisualStyleBackColor = false;
             btnAgregar.Click += btnAgregar_Click;
             // 
             // lblLista
@@ -174,13 +177,15 @@
             // 
             // btnBuscar
             // 
+            btnBuscar.BackColor = SystemColors.MenuHighlight;
             btnBuscar.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnBuscar.ForeColor = SystemColors.HighlightText;
             btnBuscar.Location = new Point(421, 505);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(144, 50);
             btnBuscar.TabIndex = 7;
             btnBuscar.Text = "Buscar";
-            btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.UseVisualStyleBackColor = false;
             btnBuscar.Click += btnBuscar_Click;
             // 
             // dataGridViewEstudiantes
@@ -229,16 +234,18 @@
             // 
             // btnEliminar
             // 
+            btnEliminar.BackColor = SystemColors.MenuHighlight;
             btnEliminar.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEliminar.ForeColor = SystemColors.HighlightText;
             btnEliminar.Location = new Point(457, 134);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(122, 48);
             btnEliminar.TabIndex = 18;
             btnEliminar.Text = "Eliminar";
-            btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.UseVisualStyleBackColor = false;
             btnEliminar.Click += button1_Click;
             // 
-            // Form1
+            // Agregarestudiante
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -262,8 +269,10 @@
             Controls.Add(lblEdad);
             Controls.Add(lblNombre);
             Controls.Add(lblTitulo);
-            Name = "Form1";
-            Text = "Form1";
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Name = "Agregarestudiante";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Agregar Estudiantes";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewEstudiantes).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();

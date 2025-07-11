@@ -10,7 +10,7 @@ using SqlDataReader = Microsoft.Data.SqlClient.SqlDataReader;
 
 namespace Practica_Basica
 {
-    public partial class Form1 : Form
+    public partial class Agregarestudiante : Form
     {
         public class EstudianteNacional : Estudiante
         {
@@ -25,7 +25,7 @@ namespace Practica_Basica
         private ConexionDatos conexion;
         private EventHandler cmbFiltroDocumento_SelectedIndexChanged;
 
-        public Form1()
+        public Agregarestudiante()
         {
             InitializeComponent();
             DatosEnGrid();
