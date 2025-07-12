@@ -27,11 +27,11 @@ namespace Capa_Negocio
                 using (SqlConnection conn = conexion.GetConnection())
                 {
                     conn.Open();
-                    string query = "INSERT INTO Notas (EstudianteId, MateriaId, Nota) VALUES (@EstudianteId, @MateriaId, @Nota)";
+                    string query = "INSERT INTO Notas (EstudianteId, MateriaId, Calificacion) VALUES (@EstudianteId, @MateriaId, @Calificacion)";
                     SqlCommand cmd = new SqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@EstudianteId", EstudianteId);
                     cmd.Parameters.AddWithValue("@MateriaId", MateriaId);
-                    cmd.Parameters.AddWithValue("@Nota", Nota);
+                    cmd.Parameters.AddWithValue("@Calificacion", Nota);
                     cmd.ExecuteNonQuery();
                 }
 

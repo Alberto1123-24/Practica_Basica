@@ -5,7 +5,7 @@ namespace Capa_Negocio
     {
         internal static void Show(string v)
         {
-           // throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
     }
 }

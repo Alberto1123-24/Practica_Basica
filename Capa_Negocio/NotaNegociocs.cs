@@ -29,16 +29,19 @@ namespace Capa_Negocio
                 {
                     conn.Open();
                     string query = @"
-                        SELECT 
-                            E.Nombre AS Estudiante,
-                            M.Nombre AS Materia,
-                            N.Nota
-                        FROM Notas N
-                        INNER JOIN Estudiante E ON N.EstudianteId = E.Id
-                        INNER JOIN Materia M ON N.MateriaId = M.Id";
+                SELECT 
+                    E.Nombre AS Estudiante,
+                    M.Nombre AS Materia,
+                    N.Calificacion AS Nota
+                FROM Notas N
+                INNER JOIN Estudiante E ON N.EstudianteId = E.Id
+                INNER JOIN Materia M ON N.MateriaId = M.Id";
 
-                    
-                    
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(tabla); // <- Aquí llenas el DataTable con los resultados
+                    }
                 }
             }
             catch (Exception ex)
